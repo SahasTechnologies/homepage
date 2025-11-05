@@ -1,7 +1,3 @@
-/* hackatime dont blame me
-i copy pasted this from my own inline css
-and modified it a bit
-*/
 /* Global styles for homepage */
 :root {
   --spacing: 16px;
@@ -27,6 +23,7 @@ body {
     Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   background: var(--bg);
   color: var(--fg);
+  cursor: url('https://cdn.custom-cursor.com/db/21136/32/color-pixels-light-blue-cursor.png'), default;
   height: 100vh;
   box-sizing: border-box;
   display: flex;
@@ -48,7 +45,7 @@ body {
   border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
   background: transparent;
   color: var(--fg);
-  cursor: pointer;
+  cursor: url('https://cdn.custom-cursor.com/db/21135/32/color-pixels-light-blue-pointer.png'), pointer;
   z-index: 100;
   transition: transform 0.2s ease;
 }
@@ -59,6 +56,11 @@ body {
 
 .theme-toggle .icon-wrap {
   display: none;
+}
+
+button,
+a[href] {
+  cursor: url('https://cdn.custom-cursor.com/db/21135/32/color-pixels-light-blue-pointer.png'), pointer;
 }
 
 html[data-theme='dark'] .theme-toggle .icon-sun {
@@ -119,7 +121,7 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   height: 72px;
   border-radius: 9999px;
   transform-origin: center;
-  cursor: default;
+  cursor: url('https://cdn.custom-cursor.com/db/21136/32/color-pixels-light-blue-cursor.png'), default;
 }
 
 .avatar.spin {
@@ -158,6 +160,7 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   font-size: 14px;
   transition: transform 0.5s ease;
   transform-origin: center;
+  cursor: url('/pointer.cur'), pointer;
 }
 
 .btn:hover {

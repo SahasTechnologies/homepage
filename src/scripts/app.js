@@ -1,4 +1,6 @@
 // Bundled client module for icons, theme toggle, and interactions
+//idk why i named it app.js its not an app its just some scripts
+// i wasnt bothered to write 3 extra letters i guess
 import { createIcons, icons } from 'lucide';
 
 function setThemeLight() {
