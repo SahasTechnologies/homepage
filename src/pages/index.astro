@@ -2,7 +2,7 @@
 import appScript from '../scripts/app.js?url';
 import appStyles from '../scripts/styles.css?url';
 ---
-<!-- whats different between this and html? -->
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -42,10 +42,16 @@ import appStyles from '../scripts/styles.css?url';
 				<h1 class="name">Sahas Shimpi</h1>
 			</div>
 			<div class="actions">
-				<a class="btn" href="#projects">Projects</a>
+				<a class="btn pop-target" href="#projects">Projects</a>
 			</div>
 		</div>
+		<footer class="footer">
+			<a class="footer-link pop-target" href="https://github.com/SahasTechnologies" target="_blank" rel="noreferrer noopener" aria-label="GitHub: SahasTechnologies (Sahas Shimpi)">
+				<i data-lucide="github"></i>
+			</a>
+			<p class="credits">Profile pic from duolingo, cursor from custom-cursor</p>
+			<p class="tagline tagline-footer">Made with <i data-lucide="heart" class="icon-heart"></i> by Sahas</p>
+		</footer>
 		<script type="module" src={appScript}></script>
 	</body>
 </html>
-<!-- short and sweet astro just like a NORMAL HTML FiLE!!! -->

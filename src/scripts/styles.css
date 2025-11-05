@@ -144,6 +144,29 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   margin: 0;
 }
 
+.tagline {
+  margin: 0;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--fg) 70%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.tagline-footer {
+  pointer-events: auto;
+}
+
+.icon-heart {
+  color: #ff4d6d;
+}
+
+.icon-heart path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
 .actions {
   margin-top: 20px;
   display: flex;
@@ -160,14 +183,14 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   font-size: 14px;
   transition: transform 0.5s ease;
   transform-origin: center;
-  cursor: url('/pointer.cur'), pointer;
+  cursor: url('https://cdn.custom-cursor.com/db/21135/32/color-pixels-light-blue-pointer.png'), pointer;
 }
 
 .btn:hover {
   transform: scale(1.08);
 }
 
-.btn.pop {
+.pop-target.pop {
   animation: btn-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -184,4 +207,50 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   100% {
     transform: scale(1);
   }
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none; /* allow clicks only on children */
+}
+
+.footer-link {
+  color: var(--fg);
+  text-decoration: none;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  transition: transform 0.5s ease, background 0.3s ease;
+}
+
+.footer-link svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+.footer-link:hover {
+  transform: scale(1.08);
+  background: color-mix(in srgb, var(--bg) 65%, transparent);
+}
+
+.credits {
+  margin: 0;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--fg) 70%, transparent);
+  pointer-events: auto;
 }

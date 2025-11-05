@@ -1,6 +1,4 @@
 // Bundled client module for icons, theme toggle, and interactions
-//idk why i named it app.js its not an app its just some scripts
-// i wasnt bothered to write 3 extra letters i guess
 import { createIcons, icons } from 'lucide';
 
 function setThemeLight() {
@@ -16,7 +14,7 @@ function init() {
 
   const avatar = document.querySelector('.avatar');
   const ring = document.querySelector('.avatar-ring');
-  const buttons = Array.from(document.querySelectorAll('.btn'));
+  const popTargets = Array.from(document.querySelectorAll('.pop-target'));
   const toggleBtn = document.querySelector('.theme-toggle');
 
   // Theme default: stored override else system
@@ -61,11 +59,11 @@ function init() {
     });
   }
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      btn.classList.remove('pop');
-      void getComputedStyle(btn).transform;
-      btn.classList.add('pop');
+  popTargets.forEach((target) => {
+    target.addEventListener('click', () => {
+      target.classList.remove('pop');
+      void getComputedStyle(target).transform;
+      target.classList.add('pop');
     });
   });
 }
