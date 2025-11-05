@@ -1,3 +1,8 @@
+---
+import appScript from '../scripts/app.js?url';
+import appStyles from '../scripts/styles.css?url';
+---
+<!-- whats different between this and html? -->
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -10,140 +15,36 @@
 			rel="stylesheet"
 		/>
 		<title>Sahas Shimpi</title>
-		<style>
-			:root { --spacing: 16px; }
-			html, body { height: 100%; }
-			body {
-				margin: 0;
-				font-family: 'Red Hat Text', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-				height: 100vh;
-				box-sizing: border-box;
-				display: flex;
-				justify-content: center;
-				align-items: flex-start;
-				padding-top: 96px;
-				overflow: hidden;
-			}
-			.header {
-				display: inline-flex;
-				align-items: center;
-				gap: 16px;
-			}
-			.stack {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			}
-			.avatar-ring {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				padding: 8px;
-				border-radius: 9999px;
-				background: var(--ring-color, #2561ac);
-				transition: background 0.3s ease;
-			}
-			.avatar-inner {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				padding: 4px;
-				border-radius: 9999px;
-				background: #ffffff;
-			}
-			.avatar {
-				width: 72px;
-				height: 72px;
-				border-radius: 9999px;
-				transform-origin: center;
-				cursor: default;
-			}
-			.avatar.spin {
-				animation: spin 0.6s ease forwards;
-			}
-			@keyframes spin {
-				from { transform: rotate(0deg); }
-				to { transform: rotate(360deg); }
-			}
-			.name {
-				font-weight: 700;
-				font-size: 38px;
-				line-height: 1;
-				margin: 0;
-			}
-			.actions {
-				margin-top: 20px;
-				display: flex;
-				gap: 12px;
-			}
-			.btn {
-				text-decoration: none;
-				border: 1px solid #2561ac;
-				color: #2561ac;
-				padding: 8px 14px;
-				border-radius: 9999px;
-				font-weight: 600;
-				font-size: 14px;
-				transition: transform 0.5s ease;
-				transform-origin: center;
-			}
-			.btn:hover {
-				transform: scale(1.08);
-			}
-			.btn.pop {
-				animation: btn-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-			}
-			@keyframes btn-pop {
-				0% { transform: scale(1); }
-				40% { transform: scale(0.8); }
-				70% { transform: scale(1.05); }
-				100% { transform: scale(1); }
-			}
-		</style>
+		<script>
+			(function(){
+				try {
+					const stored = localStorage.getItem('theme');
+					const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					const mode = (stored === 'light' || stored === 'dark') ? stored : (prefers ? 'dark' : 'light');
+					document.documentElement.setAttribute('data-theme', mode);
+				} catch (e) {}
+			})();
+		</script>
+		<link rel="stylesheet" href={appStyles} />
 	</head>
 	<body>
+		<button class="theme-toggle" aria-label="Toggle theme">
+			<span class="icon-wrap icon-moon"><i data-lucide="moon"></i></span>
+			<span class="icon-wrap icon-sun"><i data-lucide="sun"></i></span>
+		</button>
 		<div class="stack">
 			<div class="header">
 				<span class="avatar-ring">
 					<span class="avatar-inner">
-						<img src="/propic.png" alt="Profile picture" class="avatar" width="72" height="72" />
+						<img src="/propic.png" alt="Sahas Shimpi" class="avatar" width="72" height="72" />
 					</span>
 				</span>
 				<h1 class="name">Sahas Shimpi</h1>
 			</div>
 			<div class="actions">
 				<a class="btn" href="#projects">Projects</a>
-				<a class="btn" href="#about">About</a>
 			</div>
 		</div>
-		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				const avatar = document.querySelector<HTMLImageElement>('.avatar');
-				const ring = document.querySelector<HTMLSpanElement>('.avatar-ring');
-				const buttons = Array.from(document.querySelectorAll<HTMLAnchorElement>('.btn')).filter((button): button is HTMLAnchorElement => button instanceof HTMLAnchorElement);
-				if (avatar) {
-					avatar.addEventListener('click', () => {
-						avatar.classList.remove('spin');
-						// Force reflow to restart animation
-						void avatar.offsetWidth;
-						avatar.classList.add('spin');
-					});
-				}
-				if (ring) {
-					ring.addEventListener('mouseenter', () => {
-						const hue = 200 + Math.floor(Math.random() * 60); // blue hues ~200-260
-						const newColor = `hsl(${hue}, 75%, 60%)`;
-						ring.style.setProperty('--ring-color', newColor);
-					});
-				}
-				buttons.forEach((btn) => {
-					btn.addEventListener('click', () => {
-						btn.classList.remove('pop');
-						void btn.offsetWidth;
-						btn.classList.add('pop');
-					});
-				});
-			});
-		</script>
+		<script type="module" src={appScript}></script>
 	</body>
 </html>

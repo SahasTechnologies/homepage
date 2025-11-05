@@ -1,0 +1,184 @@
+/* hackatime dont blame me
+i copy pasted this from my own inline css
+and modified it a bit
+*/
+/* Global styles for homepage */
+:root {
+  --spacing: 16px;
+  --bg: #ffffff;
+  --fg: #0b0f19;
+  --gap-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg: #0b0f19;
+  --fg: #f5f7fb;
+  --gap-color: #0b0f19;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Red Hat Text', system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: var(--bg);
+  color: var(--fg);
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 96px;
+  overflow: hidden;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+.theme-toggle .icon-wrap {
+  display: none;
+}
+
+html[data-theme='dark'] .theme-toggle .icon-sun {
+  display: grid;
+}
+
+html:not([data-theme='dark']) .theme-toggle .icon-moon {
+  display: grid;
+}
+
+.avatar-inner {
+  position: relative;
+}
+
+.avatar-inner > img {
+  position: relative;
+  z-index: 1;
+}
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 9999px;
+  background: var(--ring-color, #2561ac);
+  transition: background 0.3s ease;
+}
+
+.avatar-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 9999px;
+  background: var(--gap-color);
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 9999px;
+  transform-origin: center;
+  cursor: default;
+}
+
+.avatar.spin {
+  animation: spin 0.6s ease forwards;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.name {
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1;
+  margin: 0;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  text-decoration: none;
+  border: 1px solid #2561ac;
+  color: #2561ac;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.5s ease;
+  transform-origin: center;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+.btn.pop {
+  animation: btn-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes btn-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
