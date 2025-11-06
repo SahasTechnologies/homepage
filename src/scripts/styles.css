@@ -4,12 +4,18 @@
   --bg: #ffffff;
   --fg: #0b0f19;
   --gap-color: #ffffff;
+  --guestbook-bg: rgba(181, 210, 255, 0.55);
+  --guestbook-border: rgba(37, 97, 172, 0.35);
+  --guestbook-input-bg: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme="dark"] {
   --bg: #0b0f19;
   --fg: #f5f7fb;
   --gap-color: #0b0f19;
+  --guestbook-bg: rgba(32, 46, 70, 0.7);
+  --guestbook-border: rgba(120, 172, 247, 0.25);
+  --guestbook-input-bg: rgba(16, 22, 35, 0.85);
 }
 
 html,
@@ -173,21 +179,94 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   gap: 12px;
 }
 
+.guestbook {
+  margin-top: 28px;
+  width: min(360px, calc(100vw - 48px));
+  background: var(--guestbook-bg);
+  border: 1px solid var(--guestbook-border);
+  border-radius: 20px;
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 48px -28px rgba(11, 15, 25, 0.45);
+}
+
+.guestbook-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--fg);
+  text-align: center;
+}
+
+.guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--fg) 75%, transparent);
+}
+
+.guestbook input[type='text'],
+.guestbook textarea {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--fg) 18%, transparent);
+  background: var(--guestbook-input-bg);
+  color: var(--fg);
+  outline: none;
+  resize: vertical;
+  min-height: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guestbook textarea {
+  line-height: 1.4;
+}
+
+.guestbook input[type='text']:focus,
+.guestbook textarea:focus {
+  border-color: color-mix(in srgb, #2561ac 70%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, #2561ac 25%, transparent);
+}
+
+.guestbook-submit {
+  align-self: flex-end;
+  padding-inline: 20px;
+}
+
 .btn {
   text-decoration: none;
-  border: 1px solid #2561ac;
-  color: #2561ac;
+  border: 1px solid color-mix(in srgb, var(--fg) 60%, transparent);
+  color: var(--fg);
+  background: transparent;
   padding: 8px 14px;
   border-radius: 9999px;
   font-weight: 600;
   font-size: 14px;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, border-color 0.2s ease, background 0.2s ease;
   transform-origin: center;
   cursor: url('https://cdn.custom-cursor.com/db/21135/32/color-pixels-light-blue-pointer.png'), pointer;
 }
 
 .btn:hover {
   transform: scale(1.08);
+  border-color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
 }
 
 .pop-target.pop {

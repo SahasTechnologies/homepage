@@ -43,7 +43,24 @@ import appStyles from '../scripts/styles.css?url';
 			</div>
 			<div class="actions">
 				<a class="btn pop-target" href="#projects">Projects</a>
+				<button type="button" class="btn pop-target random-cursor">Click me</button>
 			</div>
+			<section class="guestbook" aria-labelledby="guestbook-title">
+				<h2 class="guestbook-title" id="guestbook-title">Submit something to the guestbook!</h2>
+				<form class="guestbook-form" action="https://formsubmit.co/6c972f7264bbc4fb421d77f26f5217f9" method="POST">
+					<input type="hidden" name="_captcha" value="false" />
+					<input type="hidden" name="_subject" value="New guestbook entry" />
+					<label class="field">
+						<span class="field-label">Name</span>
+						<input type="text" name="name" placeholder="Your name" autocomplete="name" />
+					</label>
+					<label class="field">
+						<span class="field-label">Message</span>
+						<textarea name="message" placeholder="Say hello..." rows="4" required></textarea>
+					</label>
+					<button type="submit" class="btn guestbook-submit pop-target">Send</button>
+				</form>
+			</section>
 		</div>
 		<footer class="footer">
 			<a class="footer-link pop-target" href="https://github.com/SahasTechnologies" target="_blank" rel="noreferrer noopener" aria-label="GitHub: SahasTechnologies (Sahas Shimpi)">
