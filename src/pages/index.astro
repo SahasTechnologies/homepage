@@ -50,6 +50,7 @@ import appStyles from '../scripts/styles.css?url';
 				<form class="guestbook-form" action="https://formsubmit.co/6c972f7264bbc4fb421d77f26f5217f9" method="POST">
 					<input type="hidden" name="_captcha" value="false" />
 					<input type="hidden" name="_subject" value="New guestbook entry" />
+					<input type="hidden" name="ip" id="ip-field" value="" />
 					<label class="field">
 						<span class="field-label">Name</span>
 						<input type="text" name="name" placeholder="Your name" autocomplete="name" />
@@ -58,11 +59,16 @@ import appStyles from '../scripts/styles.css?url';
 						<span class="field-label">Message</span>
 						<textarea name="message" placeholder="Say hello..." rows="4" required></textarea>
 					</label>
+					<label class="field">
+						<span class="field-label">Where are you from?</span>
+						<input type="text" name="location" id="location-field" placeholder="Loading..." />
+					</label>
 					<button type="submit" class="btn guestbook-submit pop-target">Send</button>
 				</form>
 			</section>
 		</div>
 		<footer class="footer">
+			<div class="divider" aria-hidden="true"></div>
 			<a class="footer-link pop-target" href="https://github.com/SahasTechnologies" target="_blank" rel="noreferrer noopener" aria-label="GitHub: SahasTechnologies (Sahas Shimpi)">
 				<i data-lucide="github"></i>
 			</a>

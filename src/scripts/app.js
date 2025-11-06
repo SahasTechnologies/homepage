@@ -115,6 +115,34 @@ function init() {
       target.classList.add('pop');
     });
   });
+
+  // Fetch IP and location for guestbook form
+  const ipField = document.getElementById('ip-field');
+  const locationField = document.getElementById('location-field');
+  
+  if (ipField && locationField) {
+    // Fetch both IP and location from ip-api.com (auto-detects current IP)
+    fetch('http://ip-api.com/json/?fields=status,query,city')
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          if (data.query) {
+            ipField.value = data.query;
+          }
+          if (data.city) {
+            locationField.placeholder = data.city;
+          } else {
+            locationField.placeholder = 'Your city';
+          }
+        } else {
+          locationField.placeholder = 'Your city';
+        }
+      })
+      .catch((error) => {
+        console.log('Location fetch error:', error);
+        locationField.placeholder = 'Your city';
+      });
+  }
 }
 
 if (document.readyState === 'loading') {

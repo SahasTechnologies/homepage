@@ -30,13 +30,16 @@ body {
   background: var(--bg);
   color: var(--fg);
   cursor: url('https://cdn.custom-cursor.com/db/21136/32/color-pixels-light-blue-cursor.png'), default;
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding-top: 96px;
-  overflow: hidden;
+  padding-bottom: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .theme-toggle {
@@ -101,6 +104,7 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 60px;
 }
 
 .avatar-ring {
@@ -191,6 +195,19 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   gap: 16px;
   backdrop-filter: blur(10px);
   box-shadow: 0 24px 48px -28px rgba(11, 15, 25, 0.45);
+  position: relative;
+}
+
+.divider {
+  width: min(360px, calc(100vw - 48px));
+  height: 1px;
+  margin: 40px auto 28px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--fg) 25%, transparent) 50%,
+    transparent
+  );
 }
 
 .guestbook-title {
@@ -256,6 +273,7 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
   background: transparent;
   padding: 8px 14px;
   border-radius: 9999px;
+  font-family: 'Red Hat Text', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: 14px;
   transition: transform 0.5s ease, border-color 0.2s ease, background 0.2s ease;
@@ -290,14 +308,13 @@ html:not([data-theme='dark']) .theme-toggle .icon-moon {
 
 /* Footer */
 .footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 16px;
+  position: static;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 24px;
+  padding-bottom: 16px;
   pointer-events: none; /* allow clicks only on children */
 }
 
