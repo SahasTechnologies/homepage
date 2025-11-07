@@ -1,5 +1,5 @@
 ---
-import appStyles from '../scripts/styles.css?url';
+
 ---
 
 <html lang="en">
@@ -8,72 +8,9 @@ import appStyles from '../scripts/styles.css?url';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.bunny.net" />
-		<link
-			href="https://fonts.bunny.net/css?family=red-hat-text:400,700&display=swap"
-			rel="stylesheet"
-		/>
-		<title>Sahas Shimpi</title>
-		<script>
-			(function(){
-				try {
-					const stored = localStorage.getItem('theme');
-					const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
-					const mode = (stored === 'light' || stored === 'dark') ? stored : (prefers ? 'dark' : 'light');
-					document.documentElement.setAttribute('data-theme', mode);
-				} catch (e) {}
-			})();
-		</script>
-		<link rel="stylesheet" href={appStyles} />
+		<title>Astro</title>
 	</head>
 	<body>
-		<button class="theme-toggle" aria-label="Toggle theme">
-			<span class="icon-wrap icon-moon"><i data-lucide="moon"></i></span>
-			<span class="icon-wrap icon-sun"><i data-lucide="sun"></i></span>
-		</button>
-		<div class="stack">
-			<div class="header">
-				<span class="avatar-ring">
-					<span class="avatar-inner">
-						<img src={`${import.meta.env.BASE_URL}propic.png`} alt="Sahas Shimpi" class="avatar" width="72" height="72" onerror={`this.onerror=null;this.src='${import.meta.env.BASE_URL}favicon.svg';`} />
-					</span>
-				</span>
-				<h1 class="name">Sahas Shimpi</h1>
-			</div>
-			<div class="actions">
-				<a class="btn pop-target" href="#projects">Projects</a>
-				<button type="button" class="btn pop-target random-cursor">Click me</button>
-			</div>
-			<section class="guestbook" aria-labelledby="guestbook-title">
-				<h2 class="guestbook-title" id="guestbook-title">Submit something to the guestbook!</h2>
-				<form class="guestbook-form" action="https://formsubmit.co/6c972f7264bbc4fb421d77f26f5217f9" method="POST">
-					<input type="hidden" name="_captcha" value="false" />
-					<input type="hidden" name="_subject" value="New guestbook entry" />
-					<input type="hidden" name="ip" id="ip-field" value="" />
-					<label class="field">
-						<span class="field-label">Name</span>
-						<input type="text" name="name" placeholder="Your name" autocomplete="name" />
-					</label>
-					<label class="field">
-						<span class="field-label">Message</span>
-						<textarea name="message" placeholder="Say hello..." rows="4" required></textarea>
-					</label>
-					<label class="field">
-						<span class="field-label">Where are you from?</span>
-						<input type="text" name="location" id="location-field" placeholder="Loading..." />
-					</label>
-					<button type="submit" class="btn guestbook-submit pop-target">Send</button>
-				</form>
-			</section>
-		</div>
-		<footer class="footer">
-			<div class="divider" aria-hidden="true"></div>
-			<a class="footer-link pop-target" href="https://github.com/SahasTechnologies" target="_blank" rel="noreferrer noopener" aria-label="GitHub: SahasTechnologies (Sahas Shimpi)">
-				<i data-lucide="github"></i>
-			</a>
-			<p class="credits">Profile pic from duolingo, cursor from custom-cursor</p>
-			<p class="tagline tagline-footer">Made with <i data-lucide="heart" class="icon-heart"></i> by Sahas</p>
-		</footer>
-		<script type="module" src={Astro.resolve('../scripts/app.js')}></script>
+		<h1>Astro</h1>
 	</body>
 </html>
