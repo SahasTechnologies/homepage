@@ -1,5 +1,5 @@
 ---
-
+import { Moon, Sun } from 'lucide-astro';
 ---
 
 <html lang="en">
@@ -8,9 +8,35 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<link rel="preconnect" href="https://fonts.bunny.net">
+		<link href="https://fonts.bunny.net/css?family=red-hat-text:400,700" rel="stylesheet" />
+		<link rel="stylesheet" href="/src/styles/styles.css"
+		<title>Sahas</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<!-- Theme Toggle Button -->
+		 <button id="theme-toggle" class="theme-toggle">
+			<Sun class="sun-icon" size={24} />
+			<Moon class="moon-icon" size="24" />
+		 </button>
+
+		<!-- the profile actual stuff -->
+		<div class="profile-section">
+			<div class="profile-image-wrapper">
+				<div class="profile-image-container">
+					<img id="profile-image" src="/propic.png" alt="Profile" class="profile-image" />
+					<img id="profile-image-happy" src="/propichappy.png" alt="Profile Happy" class="profile-image-hidden" />
+				</div> <!--imagine 3 divs in one... -->
+			</div>
+			<h1 class="profile-name">Sahas Shimpi</h1>
+		</div>
+
+		<!-- buttons (incl. the fun one) -->
+		<div style="display: flex; justify-content: center; gap: 16px;"> <!-- idk too lazy to put this in css -->
+			<button id="projects-button" class="pil-button">Projects</button>
+			<button id="cursor-button" class="pill-button">Click Me</button>
+		</div>
+
+		<script src="/src/scripts/script.js"></script>
 	</body>
 </html>

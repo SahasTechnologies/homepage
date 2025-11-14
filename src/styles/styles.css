@@ -1,0 +1,280 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0a0e1a; /* got this straight off g image picker hope its a good colour */
+    --text-color: #ffffff; /* css is so annoying on Australian english, you dont know when to write colour and when to write color so you just have to spell it WRONG (color) all the time */
+/* sorry for my yap on the previous line, people who read this */
+} /* if you are reading this tysm for looking into my code */
+/* pls give feedback on the site in my guestbook */
+
+* {
+    margin: 0;
+    padding:  0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    font-family: 'Red Hat Text', sans-serif;
+}
+
+/* theme toggle - with extra animation looks so nice*/
+.theme-toggle {
+    position: fixed; /*duh*/
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background-color: var(--text-color);
+}
+
+.theme-toggle:hover .sun-icon,
+.theme-toggle:hover .moon-icon {
+    color: var(--bg-color);
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: var(--text-color);
+    pointer-events: none;
+}
+
+.moon-icon {
+    opacity: 0; /* just in case */
+    transform: rotate(180deg); /* this looks SOO NICE*/
+}
+
+[data-theme="dark"] .sun-icon {
+    opacity: 0;
+    transform: rotate(-180deg);
+}
+
+[data-theme="dark"] .moon-icon {
+    opacity: 1; /* why not */
+    transform: rotate(0deg);
+}
+
+/* the profile bit*/
+.profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px; /* change this if it is too much */
+    padding: 60px 20px;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 50; /*pill shaped*/
+    border: 6px solid #2561ac; /* the duolingo background */
+    padding: 5px;
+    transition: border-color 0.3s ease, transform 0.6s ease;
+    cursor: pointer; /* so people dont find that more stuff happens when you click*/
+}
+
+profile-image-wrapper:hover {
+    border-color: #1e4a8a;
+}
+
+.profile-image-wrapper:hover:nth-of-type(1) {
+    border-color: #3b82f6;
+}
+
+.profile-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-image.hidden  {
+    display: none;
+}
+
+.profile-name {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.pill-button {
+    margin-top: 10px;
+    padding: 10px 30px; /* check if this is all good*/
+    font-family: 'Red Hat Text', 'sans-serif'; /* second time i typed this in 10 lines *sigh* */
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: none;
+    border: 4px solid var(--text-color);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pill-button:hover {
+    border-color: #2561ac;
+    transform: scale(1.1); /* if too small change later FIXME */
+}
+
+.pill-button:active {
+    transform: scale(1.05);
+}
+
+body.custom-cursor,
+body.custom-cursor * {
+    cursor: url(''), auto !important;
+}
+
+body.custom-cursor a,
+body.custom-cursor button,
+body.custom-cursor .theme-toggle,
+body.custom-cursor .pill-button {
+    cursor: url(''), pointer !important;
+}
+
+/* footer */
+.footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Red Hat Text', sans-serif;
+}
+
+.github-link {
+    background: none;
+    border: 2px solid var(--text-color);
+    border-radius: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:all 0.3s ease;
+    cursor:pointer;
+    text-decoration:none;
+    color:var(--text-color);
+}
+
+
+.github-link:hover {transform: scale(1.1); background-color: var(--text-color); color:var(--bg-color);}
+.github-icon{pointer-events:none;}
+
+.credits {
+    text-align:center;
+    opacity:0.7;
+    color: var(--text-color);
+    font-size:0.75rem;
+}
+
+/* the heart stuff */
+.heart-container{position:relative;display:inline-flex;cursor:pointer} /* sorry for future debugging me - i was trying to fit this line in least characters*/
+.made-with {
+    font-size: 1rem;
+    color:var(--text-color);
+    display:flex;
+    align-items:center;
+    gap: 6px;
+}
+/* ykw why not ill try and put all functions in one (sorry in advance to future me) */
+.heart-icon{transition:transform 0.3s ease;color:var(--text-color)}.heart-icon-outline{display:block}.heart-icon.filled{display:none}.heart-container:hover.heart-icon.outline{display:none}.heart-container:hover.heart-icon.filled{display:block;animation:heartbeat 0.6s ease-in-out infinite};
+/* yeah nevermind i hope it will work 100% and i dont have to edit any of this... */
+/* lets go back to _normal_ code */
+
+@keyframes heartbeat {
+	0%, 100% {
+		transform: scale(1);
+	}
+	25% {
+		transform: scale(0.85);
+	}
+	50% {
+		transform: scale(1.15);
+	}
+	75% {
+		transform: scale(0.95);
+	}
+}
+
+.floating-heart {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	pointer-events: none;
+	animation: floatUp 1.5s ease-out forwards;
+	color: var(--text-color);
+}
+
+@keyframes floatUp {
+	0% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0) scale(0.5);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-100px) scale(0.3);
+	}
+}
+
+@media (max-width: 768px) {
+	.profile-section {
+		flex-direction: column;
+		gap: 16px;
+		padding: 40px 20px;
+	}
+
+	.profile-name {
+		font-size: 2rem;
+	}
+
+	.profile-image-wrapper {
+		width: 120px;
+		height: 120px;
+	}
+	
+	.footer {
+		bottom: 10px;
+	}
+	
+	.made-with {
+		font-size: 0.9rem;
+	}
+}
+
